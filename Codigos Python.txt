@@ -1,0 +1,103 @@
+CODIGO PRACTICA 1:
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Ruta al archivo CSV
+ruta = '/content/drive/MyDrive/Raw Data.csv'
+
+# Cargar el archivo
+df = pd.read_csv(ruta, sep='\t')
+
+# Limpiar nombres de columna
+df.columns = df.columns.str.strip().str.replace(r'\s+', 
+' 
+regex=True) 
+df.rename(columns={
+    'Time (s)': 'Time',
+    'Linear Acceleration x (m/s^2)': 'Ax',
+    'Linear Acceleration y (m/s^2)': 'Ay',
+    'Linear Acceleration z (m/s^2)': 'Az',
+    'Absolute acceleration (m/s^2)': 'Abs'
+}, inplace=True)
+
+# Crear subplots
+fig, axs = plt.subplots(4, 1, figsize=(12, 10), sharex=True)
+
+axs[0].plot(df['Time'], df['Ax'], color='blue')
+axs[0].set_ylabel('Ax (m/s²)')
+axs[0].set_title('Aceleración en X')
+axs[0].grid(True)
+
+axs[1].plot(df['Time'], df['Ay'], color='green')
+axs[1].set_ylabel('Ay (m/s²)')
+axs[1].set_title('Aceleración en Y')
+axs[1].grid(True)
+
+axs[2].plot(df['Time'], df['Az'], color='red')
+axs[2].set_ylabel('Az (m/s²)')
+axs[2].set_title('Aceleración en Z')
+axs[2].grid(True)
+
+axs[3].plot(df['Time'], df['Abs'], color='purple')
+axs[3].set_xlabel('Tiempo (s)')
+axs[3].set_ylabel('Abs (m/s²)')
+axs[3].set_title('Aceleración Absoluta')
+axs[3].grid(True)
+
+plt.tight_layout()
+plt.show()
+
+
+CODIGO PRACTICA 2
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Ruta al archivo CSV
+ruta = '/content/drive/MyDrive/Raw D.csv'
+
+# Cargar el archivo
+df = pd.read_csv(ruta, sep='\t')
+
+Limpiar nombres de columna 
+ 
+df.columns = df.columns.str.strip().str.replace(r'\s+', 
+' 
+', 
+regex=True)
+df.rename(columns={
+'Time (s)': 'Time',
+'Gyroscope x (rad/s)': 'Gx',
+'Gyroscope y (rad/s)': 'Gy',
+ 'Gyroscope z (rad/s)': 'Gz',
+ 'Absolute (rad/s)': 'Abs'
+}, inplace=True)
+
+# Crear subplots
+fig, axs = plt.subplots(4, 1, figsize=(12, 10), sharex=True)
+
+axs[0].plot(df['Time'], df['Gx'], color='orange')
+axs[0].set_ylabel('Gx (rad/s)')
+axs[0].set_title('Velocidad angular en X')
+axs[0].grid(True)
+
+axs[1].plot(df['Time'], df['Gy'], color='green')
+axs[1].set_ylabel('Gy (rad/s)')
+axs[1].set_title('Velocidad angular en Y')
+axs[1].grid(True)
+
+axs[2].plot(df['Time'], df['Gz'], color='blue')
+axs[2].set_ylabel('Gz (rad/s)')
+axs[2].set_title('Velocidad angular en Z')
+axs[2].grid(True)
+
+axs[3].plot(df['Time'], df['Abs'], color='black')
+axs[3].set_xlabel('Tiempo (s)')
+axs[3].set_ylabel('Abs (rad/s)')
+axs[3].set_title('Velocidad angular absoluta')
+axs[3].grid(True)
+
+plt.tight_layout()
+plt.show()
+
